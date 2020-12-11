@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { setStoredValue } from './localStorageTools'
+import { restockCash, purchase } from './cashFloatTools'
 
-function App() {
+function App ({ props }) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className='App'>
+      <header className='App-header'>
+        <p onClick={
+          () => setStoredValue('cashFloat', restockCash({ standard: true }))
+        }
         >
-          Learn React
-        </a>
+          restock coins
+        </p>
+        <p onClick={() => console.log(purchase(3, { 2: 1, 0.1: 11 }))}>
+          test purchase
+        </p>
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
